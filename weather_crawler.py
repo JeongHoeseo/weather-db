@@ -1,8 +1,12 @@
 import os
+import json  # 이 줄이 빠져있어서 에러가 난 것입니다!
 import mysql.connector
 import firebase_admin
 from firebase_admin import credentials, firestore
+import requests
+from bs4 import BeautifulSoup
 
+# 나머지 코드는 그대로 두시면 됩니다.
 # Firebase 초기화 (기존과 동일)
 service_account_info = json.loads(os.environ.get('FIREBASE_SERVICE_ACCOUNT'))
 cred = credentials.Certificate(service_account_info)
