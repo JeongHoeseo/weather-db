@@ -1,0 +1,29 @@
+name: Weather Crawler
+on:
+  schedule:
+    - cron: '*/30 * * * *' # 30분마다 실행
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install mysql-connector-python firebase-admin requests beautifulsoup4
+
+      - name: Run crawler
+        env:
+          MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+          # Firebase 키는 환경변수로 관리하기 까다로우므로 아래 설명 참조
+        run: python weather_mysql_firebase_학번_이름.py
