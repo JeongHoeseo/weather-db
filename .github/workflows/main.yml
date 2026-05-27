@@ -26,4 +26,4 @@ jobs:
           MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
           MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
           # Firebase 키는 환경변수로 관리하기 까다로우므로 아래 설명 참조
-        run: weather_crawler.py
+        run: python weather_crawler.py
