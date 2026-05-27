@@ -15,7 +15,7 @@ db = firestore.client()
 # 2. 크롤링 함수
 def get_weather_data():
     weather_list = []
-    url = "https://weather.nate.com/" 
+    url = "https://news.nate.com/weather?areaCode=11C20302" 
     headers = {'User-Agent': 'Mozilla/5.0'}
     
     try:
